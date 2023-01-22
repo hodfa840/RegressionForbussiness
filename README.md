@@ -25,6 +25,7 @@ Please Run
 
 Task1.R
 
+For the report please check, Task1.pdf
 ### Task2 :
 
 Second task				

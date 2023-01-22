@@ -191,14 +191,27 @@ plot(model)
 mB=glmnet(trainX, train$Pizza, alpha=1,family="gaussian", lambda = model$lambda.min)
 plot(predict(mB, testX),test$Pizza)
 
+
 coefs <- coef(mB, s = "lambda.min")
-important_feature_indices <- order(coefs, decreasing = TRUE)[1:3]
-Feature_name = names(train)
-important_features <- Feature_name[important_feature_indices]
-print(important_features)
+
+important_feature_indices <- order(abs(coefs), decreasing = TRUE)[1:6]
+#Feature_name_most = names(train)
+Feature_name_most = coefs@Dimnames[[1]]
+important_features <- Feature_name_most[important_feature_indices]
+cat('The most important features: ')
+
+important_features_df = data.frame(data = t(coefs[important_feature_indices]) )
+names(important_features_df) = important_features
+print(important_features_df)
 #  "Price.offer" "Campaign.5"  "Campaign.2"
 ###############################################################
 
+coefs <- coef(mB, s = "lambda.min")
+zero_coef_indices <- which(coefs == 0)
+zero_coef_features <- Feature_name[zero_coef_indices]
+print(zero_coef_features)
+
+##############################################################
 lm2 = lm(Pizza ~ Price.offer+Temperature+Precipitation + Sun,data = train)
 summary(lm2)
 mean((train$Pizza-predict(lm2))^2)  

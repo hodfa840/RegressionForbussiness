@@ -1,0 +1,424 @@
+---
+title: "Task1"
+author: "Hoda"
+date: "2023-01-22"
+output: pdf_document
+---
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+## TASK 1
+
+
+
+```{r data, echo=FALSE}
+library(readxl)
+```
+
+## Barplot of number of sold PIZZA from 2017 - 2021
+
+In the following the barplot of #PIZZA for Temperature,SUN,Price.offer and Precipitation can be see.
+
+
+```{r years, echo=FALSE}
+data = read.csv('data.csv')
+#my_data %>% drop_na()
+Pizza = data$Pizza
+Year2017 = data[1:52,]
+Year2018 = data[53:104,]
+Year2019 = data[105:157,]
+Year2020 = data[158:209,]
+Year2021 = data[210:dim(data)[1],]
+```
+## PIZZA , Temperature
+```{r  echo=FALSE }
+
+years = c("2017", "2018", "2019", "2020", "2021")
+colors = c("blue", "green", "red", "purple", "orange")
+par(mfrow = c(1, 2))
+
+# Create the first bar plot
+barplot(c(sum(Year2017$Pizza), sum(Year2018$Pizza), sum(Year2019$Pizza), sum(Year2020$Pizza), sum(Year2021$Pizza)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Number of Sold Pizza",col=colors)
+
+# Create the second bar plot
+barplot(c(mean(Year2017$Temperature), mean(Year2018$Temperature), mean(Year2019$Temperature), mean(Year2020$Temperature), mean(Year2021$Temperature)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Temperature mean",col=colors)
+
+#####################################################################################
+```
+
+## PIZZA , Sun
+
+```{r  echo=FALSE }
+par(mfrow = c(1, 2))
+barplot(c(sum(Year2017$Pizza), sum(Year2018$Pizza), sum(Year2019$Pizza), sum(Year2020$Pizza), sum(Year2021$Pizza)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Number of Sold Pizza",col=colors)
+
+# Create the second bar plot
+barplot(c(mean(Year2017$Sun), mean(Year2018$Sun), mean(Year2019$Sun), mean(Year2020$Sun), mean(Year2021$Sun)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Sun mean",col=colors)
+```
+
+## PIZZA , Price.offer
+
+```{r}
+par(mfrow = c(1, 2))
+barplot(c(sum(Year2017$Pizza), sum(Year2018$Pizza), sum(Year2019$Pizza), sum(Year2020$Pizza), sum(Year2021$Pizza)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Number of Sold Pizza",col=colors)
+
+# Create the second bar plot
+barplot(c(mean(Year2017$Price.offer), mean(Year2018$Price.offer), mean(Year2019$Price.offer), mean(Year2020$Price.offer), mean(Year2021$Price.offer)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Price.offer mean",col=colors)
+```
+
+## PIZZA , Precipitation
+
+```{r  echo=FALSE}
+par(mfrow = c(1, 2))
+# Create the first bar plot
+barplot(c(sum(Year2017$Pizza), sum(Year2018$Pizza), sum(Year2019$Pizza), sum(Year2020$Pizza), sum(Year2021$Pizza)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Number of Sold Pizza",col=colors)
+
+# Create the second bar plot
+barplot(c(mean(Year2017$Precipitation), mean(Year2018$Precipitation), mean(Year2019$Precipitation), mean(Year2020$Precipitation), mean(Year2021$Precipitation)), 
+        names.arg = years, 
+        xlab = "Year", ylab = "Precipitation mean",col=colors)
+```
+
+## Histogram of sold PIZZA from 2017 - 2021
+```{r echo=FALSE}
+# Set the layout to 4 rows and 1 column
+par(mfrow = c(2, 3))
+
+# Create a histogram of the data for Year 2017 with frequency on the y-axis
+hist(Year2017$Pizza,
+     main = "Histogram of Year 2017", xlab = "PIZZA", ylab = "Frequency",
+     col = "blue")
+
+# Create a histogram of the data for Year 2018 with frequency on the y-axis
+hist(Year2018$Pizza, 
+     main = "Histogram of Year 2018", xlab = "PIZZA", ylab = "Frequency",
+     col = "green", border = "green")
+
+# Create a histogram of the data for Year 2019 with frequency on the y-axis
+hist(Year2019$Pizza,
+     main = "Histogram of Year 2019", xlab = "PIZZA", ylab = "Frequency",
+     col = "red", border = "red")
+
+# Create a histogram of the data for Year 2020 with frequency on the y-axis
+hist(Year2020$Pizza,  
+     main = "Histogram of Year 2020", xlab = "PIZZA", ylab = "Frequency",
+     col = "purple", border = "purple")
+
+# Create a histogram of the data for Year 2021 with frequency on the y-axis
+hist(Year2021$Pizza, 
+     main = "Histogram of Year 2021", xlab = "PIZZA", ylab = "Frequency",
+     col = "orange", border = "orange")
+```
+
+## Histogram of Temperature from 2017 - 2021
+
+```{r echo=FALSE}
+##############################################################################################
+# Set the layout to 4 rows and 1 column
+par(mfrow = c(2, 3))
+
+# Create a histogram of the data for Year 2017 with frequency on the y-axis
+hist(Year2017$Temperature,
+     main = "Histogram of Year 2017", xlab = "Temperature", ylab = "Frequency",
+     col = "blue",breaks = 50)
+
+# Create a histogram of the data for Year 2018 with frequency on the y-axis
+hist(Year2018$Temperature, 
+     main = "Histogram of Year 2018", xlab = "Temperature", ylab = "Frequency",
+     col = "green", border = "green",breaks = 50)
+
+# Create a histogram of the data for Year 2019 with frequency on the y-axis
+hist(Year2019$Temperature,
+     main = "Histogram of Year 2019", xlab = "Temperature", ylab = "Frequency",
+     col = "red", border = "red",breaks = 50)
+
+# Create a histogram of the data for Year 2020 with frequency on the y-axis
+hist(Year2020$Temperature,  
+     main = "Histogram of Year 2020", xlab = "Temperature", ylab = "Frequency",
+     col = "purple", border = "purple",breaks = 50)
+
+# Create a histogram of the data for Year 2021 with frequency on the y-axis
+hist(Year2021$Temperature, 
+     main = "Histogram of Year 2021", xlab = "Temperature", ylab = "Frequency",
+     col = "orange", border = "orange",breaks = 50)
+
+###########################################################################################
+```
+
+## Histogram of Sun from 2017 - 2021
+
+```{r echo=FALSE}
+##############################################################################################
+# Set the layout to 4 rows and 1 column
+par(mfrow = c(2, 3))
+
+# Create a histogram of the data for Year 2017 with frequency on the y-axis
+hist(Year2017$Sun,
+     main = "Histogram of Year 2017", xlab = "Sun", ylab = "Frequency",
+     col = "blue",breaks = 50)
+
+# Create a histogram of the data for Year 2018 with frequency on the y-axis
+hist(Year2018$Sun, 
+     main = "Histogram of Year 2018", xlab = "Sun", ylab = "Frequency",
+     col = "green", border = "green",breaks = 50)
+
+# Create a histogram of the data for Year 2019 with frequency on the y-axis
+hist(Year2019$Sun,
+     main = "Histogram of Year 2019", xlab = "Sun", ylab = "Frequency",
+     col = "red", border = "red",breaks = 50)
+
+# Create a histogram of the data for Year 2020 with frequency on the y-axis
+hist(Year2020$Sun,  
+     main = "Histogram of Year 2020", xlab = "Sun", ylab = "Frequency",
+     col = "purple", border = "purple",breaks = 50)
+
+# Create a histogram of the data for Year 2021 with frequency on the y-axis
+hist(Year2021$Sun, 
+     main = "Histogram of Year 2021", xlab = "Sun", ylab = "Frequency",
+     col = "orange", border = "orange",breaks = 50)
+
+###########################################################################################
+```
+
+## Histogram of Precipitation from 2017 - 2021
+
+
+```{r echo=FALSE}
+##############################################################################################
+# Set the layout to 4 rows and 1 column
+par(mfrow = c(2, 3))
+
+# Create a histogram of the data for Year 2017 with frequency on the y-axis
+hist(Year2017$Precipitation,
+     main = "Histogram of Year 2017", xlab = "Precipitation", ylab = "Frequency",
+     col = "blue",breaks = 50)
+
+# Create a histogram of the data for Year 2018 with frequency on the y-axis
+hist(Year2018$Precipitation, 
+     main = "Histogram of Year 2018", xlab = "Precipitation", ylab = "Frequency",
+     col = "green", border = "green",breaks = 50)
+
+# Create a histogram of the data for Year 2019 with frequency on the y-axis
+hist(Year2019$Precipitation,
+     main = "Histogram of Year 2019", xlab = "Precipitation", ylab = "Frequency",
+     col = "red", border = "red",breaks = 50)
+
+# Create a histogram of the data for Year 2020 with frequency on the y-axis
+hist(Year2020$Temperature,  
+     main = "Histogram of Year 2020", xlab = "Precipitation", ylab = "Frequency",
+     col = "purple", border = "purple",breaks = 50)
+
+# Create a histogram of the data for Year 2021 with frequency on the y-axis
+hist(Year2021$Precipitation, 
+     main = "Histogram of Year 2021", xlab = "Precipitation", ylab = "Frequency",
+     col = "orange", border = "orange",breaks = 50)
+
+###########################################################################################
+```
+
+## Histogram of Price.offer from 2017 - 2021
+
+
+```{r echo=FALSE}
+##############################################################################################
+# Set the layout to 4 rows and 1 column
+par(mfrow = c(2, 3))
+
+# Create a histogram of the data for Year 2017 with frequency on the y-axis
+hist(Year2017$Price.offer,
+     main = "Histogram of Year 2017", xlab = "Price.offer", ylab = "Frequency",
+     col = "blue",breaks = 50)
+
+# Create a histogram of the data for Year 2018 with frequency on the y-axis
+hist(Year2018$Price.offer, 
+     main = "Histogram of Year 2018", xlab = "Price.offer", ylab = "Frequency",
+     col = "green", border = "green",breaks = 50)
+
+# Create a histogram of the data for Year 2019 with frequency on the y-axis
+hist(Year2019$Price.offer,
+     main = "Histogram of Year 2019", xlab = "Price.offer", ylab = "Frequency",
+     col = "red", border = "red",breaks = 50)
+
+# Create a histogram of the data for Year 2020 with frequency on the y-axis
+hist(Year2020$Price.offer,  
+     main = "Histogram of Year 2020", xlab = "Price.offer", ylab = "Frequency",
+     col = "purple", border = "purple",breaks = 50)
+
+# Create a histogram of the data for Year 2021 with frequency on the y-axis
+hist(Year2021$Temperature, 
+     main = "Histogram of Year 2021", xlab = "Temperature", ylab = "Frequency",
+     col = "orange", border = "orange",breaks = 50)
+
+###########################################################################################
+```
+
+## creating the model
+
+###  Preprocessing and split to train and test
+
+```{r echo=TRUE, include= TRUE}
+
+
+data = read.csv('data.csv')
+summary(data)
+
+df2=data[, -c(1)]
+#remove 0 column
+temp = c("Campaign.14", "Campaign.15", "Campaign.16","Campaign17","Campaign.18" ) 
+df2 = df2[ ,! names(df2) %in% temp]
+df3=as.data.frame(scale(df2))
+
+data=df3
+for(i in 1:ncol(data)) {
+  data[is.na(data[,i]), i] <- min(data[,i], na.rm = TRUE)
+}
+
+# Replace missing values with the median of the column
+missing_rows <- sapply(data, function(x) any(is.na(x)))
+missing_rows_index <- which(missing_rows)
+
+
+n=dim(data)[1]
+set.seed(12345) 
+id=sample(1:n, floor(n*0.7))
+
+# split to train and test
+
+train=data[id,] 
+test=data[-id,] 
+trainX=as.matrix(train[,-1])
+testX=as.matrix(test[,-1])
+
+```
+
+### First linear regression model
+
+```{r}
+m1=lm(Pizza~., data=train)
+summary(m1)
+cat('mean square error on train set = ', mean((train$Pizza-predict(m1,train))^2,na.rm=TRUE),'\n')  
+cat('mean square error on test set = ', mean((test$Pizza-predict(m1,test))^2,na.rm=TRUE),'\n')  
+qqnorm(residuals(m1))
+qqline(residuals(m1))
+
+```
+
+### Second linear model, exclude competitor
+
+```{r}
+#model2
+model <- lm(Pizza ~ Price.offer +Temperature +Precipitation + Sun + Christmas + New.year + X17th.of.May...National.day + Easter + 
+              Kr..Himmelfart..Ascension.day. + Pinse..pentecost. + Summer.vacation + Campaign.1 + 
+              Campaign.2 + Campaign.3 + Campaign.4 + Campaign.5 + Campaign.6 + Campaign.7 + 
+              Campaign.8 + Campaign.9 + Campaign.10 + Campaign.11 + Campaign.12 + Campaign.13 , data = train)
+summary(model)
+cat('mean square error on train set = ', mean((train$Pizza-predict(model,train))^2,na.rm=TRUE),'\n')  
+
+cat('mean square error on test set = ', mean((test$Pizza-predict(model,test))^2,na.rm=TRUE),'\n')  
+
+ 
+qqnorm(residuals(model))
+qqline(residuals(model))
+```
+
+#### Finiding the most important feature among:  Price.offer, Temperature, Precipitation, Sun
+
+```{r echo=TRUE}
+###############################################################
+
+lm2 = lm(Pizza ~ Price.offer+Temperature+Precipitation + Sun,data = train)
+summary(lm2)
+cat('mean square error on train set = ', mean((train$Pizza-predict(lm2,train))^2,na.rm=TRUE),'\n')  
+
+cat('mean square error on test set = ', mean((test$Pizza-predict(lm2,test))^2,na.rm=TRUE),'\n')  
+
+qqnorm(residuals(lm2))
+qqline(residuals(lm2))
+#################################################################
+```
+
+Based on the coef Price.Offer is the most important one.
+
+## LASSO and Ridge Regression model
+
+```{r echo=TRUE}
+library(glmnet)
+model0=glmnet(trainX, train$Pizza, alpha=1,family="gaussian")
+plot(model0, xvar="lambda", label=TRUE)
+
+model1=glmnet(trainX, train$Pizza, alpha=0,family="gaussian")
+plot(model1, xvar="lambda", label=TRUE)
+
+
+
+set.seed(12345)
+model=cv.glmnet(trainX, train$Pizza, alpha=1,family="gaussian")
+model$lambda.min
+plot(model)
+
+
+mB=glmnet(trainX, train$Pizza, alpha=1,family="gaussian", lambda = model$lambda.min)
+cat('mean square error on test set = ', mean((test$Pizza-predict(mB,testX))^2),'\n')  
+plot(predict(mB, testX),test$Pizza,ylab = 'TRUE Value', xlab = 'Predicted Value',main = 'Quality of predicted Prediction')
+
+```
+
+### The most important featurs
+ 
+```{r}
+
+coefs <- coef(mB, s = "lambda.min")
+
+important_feature_indices <- order(abs(coefs), decreasing = TRUE)[1:6]
+#Feature_name_most = names(train)
+Feature_name_most = coefs@Dimnames[[1]]
+important_features <- Feature_name_most[important_feature_indices]
+cat('The most important features: ')
+
+important_features_df = data.frame(data = t(coefs[important_feature_indices]) )
+names(important_features_df) = important_features
+print(important_features_df)
+```
+Easter and Sun has negative effect in selling the highest number of PIZZA.
+
+
+### Pie chart of 
+
+```{r}
+values <- c(0.79255940,0.17012066,0.08354925,0.07847286)
+labels <- c('Price.offer','Campaign.5','Campaign.2','Competitor.4')
+pie(values, labels = paste0(round(values/sum(values)*100,2),"%"), main = "2D Percentage Pie Chart", col = rainbow(6), init.angle = 90, clockwise = TRUE, cex = 0.8)
+legend("topright",legend=labels, cex=0.8,fill=rainbow(6))
+
+
+
+```
+
+
+
+### The least important Features
+
+```{r}
+zero_coef_indices_least <- which(coefs == 0)
+Feature_name = coefs@Dimnames[[1]]
+zero_coef_features <- Feature_name[zero_coef_indices_least]
+cat('The least important features: ')
+print(zero_coef_features)
+
+```
+

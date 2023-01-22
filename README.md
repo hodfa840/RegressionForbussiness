@@ -20,6 +20,7 @@ d. Explain which variables you have put into the model and why you chose these.
 
 Please Run
 
+Task1.R
 
 ### Task2 :
 

@@ -36,3 +36,4 @@ b. Run simulation multiple times (ex. 100K) and calculate summary statistics lik
 				
 Please Run
 Task2.R
+For the report please check Task2.pdf
